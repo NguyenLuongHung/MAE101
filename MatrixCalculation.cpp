@@ -45,7 +45,7 @@ void minusMatrix(int s[][100], int s1[][100], int s2[][100], int a, int b, int c
 		}
 	}
 }
-int x = 0;
+
 void multiplyMatrix (int s[][100], int s1[][100], int s2[][100], int a, int b, int c, int d){ // multiply 2 Matrix
 	if ( b == c){
 		for (int i = 1; i <= a; i++){
