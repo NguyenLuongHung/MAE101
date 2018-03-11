@@ -1,7 +1,19 @@
+/*
+This is the source code to execute some Matrix expressions: Minus, Adding and Multiplying of 2 Matrix.
+Made by: BiDD Nguyen
+University: FPT
+Major: Information Assurance (IA1301)
+Country: Vietnam
+Date: 11/03/2018
+P/s: If you got any questions, error reports or advices, please send to the following email: luonghung.qb@gmail.com, i really appreciate that.
+
+*/
+
+
+
+
+
 #include <stdio.h>
-
-
-
 
 
 void enterMatrix(int s[][100], int a, int b){ // Input a Matrix
