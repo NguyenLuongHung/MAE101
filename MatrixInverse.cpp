@@ -100,10 +100,8 @@ void transposeMatrix(float s[][100]){ // Tranpose a Matrix
 			s[j][i] = a;
 			 if (j == 3)
 			 	b++;
-			
+		}
 	}
-	
-}
 }
 
 float adjugateOfMinors3(float s[][100], float s1[][100], float s2[][100], float s3[][100]){ // Calculate the adjugate of 3x3 Matrix
@@ -117,13 +115,13 @@ float adjugateOfMinors3(float s[][100], float s1[][100], float s2[][100], float 
 		}
 	}
 	detA = s[1][1]*s3[1][1] - s[1][2]*s3[1][2] + s[1][3]*s3[1][3];
-	printf ("Your Matrix s3 is: \n");
+	printf ("Your Minor of Matrix is: \n");
 	displayMatrix(s3, 3);
 	cofactorTrans(s3);
-	printf ("Your Cofactor of Matrix s3 is: \n");
+	printf ("Your Cofactor of Matrix is: \n");
 	displayMatrix(s3, 3);
 	transposeMatrix(s3);
-	printf ("Your Tranpose of Matrix s3 is: \n");
+	printf ("Your Tranpose of Matrix is: \n");
 	displayMatrix(s3, 3);
 	return detA;
 
@@ -151,7 +149,5 @@ int main(){
 	inverseOfMatrix3(b, detA);
 	printf ("Your inverse Matrix is: \n");
 	displayMatrix(b, a);
-	
-	
 
 }
