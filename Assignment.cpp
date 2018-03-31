@@ -48,33 +48,109 @@ void display(char s[][MAX], char s1[][MAX], double s2[], int s3[], int n){
 
 void addBook(char s[][MAX], char s1[][MAX], double s2[], int s3[], int &n){
 	int check = 0;
+	int check1 = 0;
+	int check2 = 0;
+	int check3 = 0;
+	int check4 = 0;
+	int check5 = 0;
 	int m;
+	int l;
 
 	printf ("How many books do you want to add: ");
 	scanf ("%d", &m);
+	printf ("-----\n\n");
+	printf ("You have to enter the code in the following form CDDDDD such C is an uppercase character, D are number and the code must contains 6 letters (E.x: A00001)\n\n");
+	printf ("-----\n");
+	
 	for (int i = 4; i < m+4; i++){
 		printf ("Book %d: \n", i+1);
 		do{
+			
 			printf ("Enter Book Code: ");
 			scanf ("%s", s[i]);
 			fflush(stdin);
-
+			
+			if (strlen(s[i]) < 6 || strlen(s[i]) > 6)
+				check1 = 1;
+			else check1 = 0;
+			
+			for (int k = 1; k < 6;k++){
+				if (s[i][k] < 48 || s[i][k] > 57){
+					check2 = 1;
+					break;
+				}
+				else if (s[i][k] >= 48 && s[i][k] <= 57)
+					check2 = 0;
+			} 
+			
+			
+			if (s[i][0] < 65 || s[i][0] > 90){
+				check3 = 1;
+			}
+			else if (s[i][0] >= 65 && s[i][0] <= 90)
+				check3 = 0;
+			
+			if (check1 == 1 ){
+				printf ("[**ERROR**]\n");
+				printf ("Your code must contains 6 characters!\n");
+				printf ("PLease re-enter\n\n");
+			}
+			
+			if (check2 == 1 ){
+				printf ("[**ERROR**]\n");
+				printf ("Your code must contains 5 numbers!\n");
+				printf ("PLease re-enter\n\n");
+			}
+			if (check3 == 1 ){
+				printf ("[**ERROR**]\n");
+				printf ("Your first letter must be a Uppercase letter!\n");
+				printf ("PLease re-enter\n\n");
+			}
+			
+			
 			for (int j = 0; j < i; j++){
 				if (strcmp(s[j],s[i]) == 0){
 					check = 1;
-					printf ("The code is already exist, enter another code!\n");
+					printf ("[**ERROR**]\n");
+					printf ("The code is already exist, enter another code!\n\n");
+					
 					break;
 				} else{
 					 check = 0;
 					
 				}
 			}
-		} while (check == 1);
-		
+		} while (check == 1 || check1 == 1 || check2 == 1 || check3 == 1);
+		do{
 		printf ("Enter Book Name: ");
 		scanf ("%[^\n]", s1[i]);
+		fflush(stdin);
+		l = strlen(s1[i]);
+		if (l > 30){
+			check4 == 1;
+			printf ("[**ERROR**]\n");
+			printf ("Your book name contains no more than 30 characters\n");
+			printf ("Please re-enter!\n\n");
+			
+		}
+		else if ( l < 30)
+			check4 == 0;
+		
+		} while (check4 == 1);
+		
+		do{	
+			
 		printf ("Enter Price: ");
 		scanf ("%lf", &s2[i]);
+		if (s2[i] > 0 && s2[i] < 1000)		 	
+		 		check5 = 0;		 					
+		else{
+			check5 = 1;
+			printf ("[**ERROR**]\n");
+			printf ("Your book price must be positive and less than 1000$\n");
+			printf ("Please re-enter!\n\n");			
+			}				
+		} while (check5 == 1 );
 		printf ("Enter Quantity: ");
 		scanf ("%d", &s3[i]);
 	}
